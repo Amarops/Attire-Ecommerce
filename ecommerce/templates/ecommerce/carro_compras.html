@@ -1,0 +1,79 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+    Carro de compras
+{% endblock %}
+
+{% block  content %}
+<div class = "title text-center" style="margin-top: 150px;">
+    <h2 class = "position-relative d-inline-block">Tu carrito</h2>
+</div>
+
+{% if request.session.carrito.items %}
+{% for key, value in request.session.carrito.items %}
+  <div class="card" id="blog" style="margin-left: 5%; margin-right:5%; margin-top: 50px">
+      <div class="row no-gutters">
+          <div class="col-md-4" style="max-width:300px;">
+            <img src="../media/{{value.imagen}}" class="w-120 imgsize" alt="Imagen de producto" style="object-fit: contain;">
+          </div>
+          <div class="col-md-4">
+              <div class="product-card">
+                  <div class="product-details" style="margin-top:20px;">
+                    <h3 class="product-name">{{value.nombre}}</h3>
+                    <p class="product-brand">{{value.categoria}}</p>
+                  </div>                
+                  <div class="product-price">
+                      <h4>$ {{value.acumulado|intcomma}}</h4>
+                    </div>
+              </div>
+          </div>
+          <div class="col-md-4 ms-auto">
+            <div class="product-price text-end">
+              <a href={% url 'Sub' value.producto_id %}>
+                <button class="btn btn-danger btn-round" style="margin-top:60px; margin-right:50px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                  </svg>
+                </button>
+              </a>
+              <a href={% url 'Add' value.producto_id %}>
+                <button class="btn btn-danger btn-round" style="margin-top:60px; margin-right:50px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                  </svg>
+                </button>
+              </a>
+              
+            </div>
+          </div>
+      </div>
+  </div>
+{% endfor %}
+<br>
+<hr>
+<div class = "title text-center" style="margin-top: 50px;">
+  <h2 class = "position-relative d-inline-block">Total de la compra: $ {{total_carrito|intcomma}}</h2>
+</div>
+{% else %}
+
+<div class="alert alert-warning" role="alert" style="margin-left: 30%; margin-right:30%; margin-top:5%; margin-bottom:5%; height: 200px;">
+  <h4 class="alert-heading">Tu carrito está vacío!</h4>
+  <p>Parece que se te olvidó agregar tu producto!</p>
+  <hr>
+  <p class="mb-0">No te preocupes, simplemente vuelve al menú en donde viste ese producto y dale a "Agregar al carrito", y listo!</p>
+</div>
+{% endif %}
+
+
+
+{% if total_carrito > 0 %}
+<br>
+<div class="container" style="text-align: center; margin-bottom:50px;">
+    <a href={% url 'CLS' %} style="text-decoration: none;"> <button type="submit" class="btn btn-primary" style="margin-right:10px">Limpiar carrito</button>  </a>
+    
+    <a href={% url 'pago' %} style="text-decoration: none;"> <button type="submit" class="btn btn-primary" style="margin-left:10px">Finalizar compra</button> </a>
+  </div>  
+<br>
+{% endif %}
+{% endblock %}

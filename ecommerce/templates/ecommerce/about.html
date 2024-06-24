@@ -1,0 +1,174 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+
+{% block title %}
+    Sobre nosotros
+{% endblock %}
+
+{% block  content %}
+
+ <!--Feedbacks-->
+ <div class=feedbacksize>
+  <section id = "about" class = "py-5">
+      <div class = "container">
+          <div class = "row gy-lg-5 align-items-center">
+              <div class = "col-lg-6 order-lg-1 text-center text-lg-start">
+                  <div class = "title pt-3 pb-5">
+                      <h2 class = "position-relative d-inline-block ms-4">Misión</h2>
+                  </div>
+                  <p>En Attire nos comprometemos a brindar un servicio de calidad para nuestros clientes. Durante estos 10 años en el mercado nos hemos convertido en la primera elección para los amantes de la informática, tenemos más de 2000 entregas de productos y miles de clientes satisfechos. </p>
+              </div>
+              <div class = "col-lg-6 order-lg-0">
+                  <img src = "{% static 'images/aboutus.jpeg' %}" alt = "" class = "img-fluid">
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+
+<!--Carousel -->
+<div id="carrusel" class="bg-gray py-5">
+  <div class="container">
+    <h2>Empresas con las que hemos trabajado</h2>
+    <div id="carruselIndicadores" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/Microsoft-Logopng.png' %}" alt="Empresa 1">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/Tesla-logopng.png' %}" alt="Empresa 2">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/google-logo.png' %}" alt="Empresa 3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carruselIndicadores" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carruselIndicadores" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--Valoraciones-->
+<div class="container mt-3 mt-md-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card-feedback">
+        <img src="{% static 'images/valoraciones1.jpeg' %}" class="card-img-feedback w-100 imgsize" alt="Foto 1">
+        <div class="card-body">
+          <h3>Ivan</h3>
+          <p>"Compre mi Playstation 5 apenas salió por Attire, consegui un descuento increible y llego en dias a mi casa, sin duda lo recomendaria a todo el mundo."</p>
+          <div class = "rating mt-3">
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-feedback">
+        <img src="{% static 'images/valoraciones2.jpg' %}" class="card-img-feedback w-100 imgsize" alt="Foto 2">
+        <div class="card-body">
+          <h3>Juan</h3>
+          <p>"Compre mi Nintendo Switch por Attire, la atención fue excepcional y la entrega muy rapida. Hice que mis amigos tambien compraran. Recomendado"</p>
+          <div class = "rating mt-3">
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-feedback">
+        <img src="{% static 'images/valoraciones3.jpeg' %}" class="card-img-feedback w-100 imgsize" alt="Foto 3">
+        <div class="card-body">
+          <h3>Ailin</h3>
+          <p>"Compre mi pc gamer por Attire, mi novio siempre me insistia que jugara con el hasta que termine por acceder, ahora no puedo dejar de jugar. Lo recomiendo."</p>
+          <div class = "rating mt-3">
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-feedback">
+        <img src="{% static 'images/valoraciones4.jpg' %}" class="card-img-feedback w-100 imgsize" alt="Foto 4">
+        <div class="card-body">
+          <h3>Juan Carlos</h3>
+          <p>"Compré mi grafica por Attire y todos mis articulos, sin duda la atencion 10/10. Vivo muy lejos de Santiago y se demoro 3 dias, mis hijos felices."</p>
+          <div class = "rating mt-3">
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="about-section">
+        <div class = "special-img position-relative overflow-hidden">
+          <img class="w-100 imgsize" src="{% static 'images/aboutus.jpeg' %}" alt="Historia">
+        </div>
+        <br>
+        <h2>Historia</h2>
+        
+        <p style="text-align: justify">En 2015, cuatro jóvenes estudiantes chilenos fundaron Attire por su pasión por la tecnología. Desde su modesto apartamento, se propusieron ofrecer productos electrónicos de calidad a precios accesibles. Su enfoque en el diseño elegante y la atención al cliente los hizo destacar en el mercado tecnológico chileno. Hoy en día, Attire es reconocida como una empresa líder, impulsada por la determinación y el amor por la innovación de sus fundadores.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="about-section">
+        <div class = "special-img position-relative overflow-hidden">
+          <img class="w-100 imgsize" src="{% static 'images/vision.jpeg' %}" alt="Visión">
+        </div>
+        <br>
+        <h2>Visión</h2>
+        
+        <p style="text-align: justify">En Attire, nuestra visión es ser la marca de referencia en tecnología innovadora y accesible en Chile. Nos esforzamos por brindar soluciones electrónicas vanguardistas que mejoren la vida de las personas, combinando diseño elegante, calidad excepcional y precios asequibles. Buscamos establecer relaciones duraderas con nuestros clientes, basadas en la confianza y la satisfacción. Nos impulsa el deseo de seguir evolucionando y superando los límites de la innovación.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="about-section">
+        <div class = "special-img position-relative overflow-hidden">
+          <img class="w-100 imgsize" src="{% static 'images/equipo.jpg' %}" alt="Equipo">
+        </div>
+        <br>
+        <h2>Equipo</h2>
+        
+        <p style="text-align: justify">Nuestro equipo en Attire está compuesto por seis jóvenes chilenos apasionados por la tecnología. Uniendo nuestras habilidades y conocimientos, trabajamos en conjunto para desarrollar productos electrónicos innovadores y de calidad. Nos impulsa el compromiso de superar las expectativas de nuestros clientes y brindarles soluciones tecnológicas excepcionales. Con determinación y colaboración, nos esforzamos por posicionar a Attire como líder en el mercado.</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+
+
+
+
+{% endblock %}

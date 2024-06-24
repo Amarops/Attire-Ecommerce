@@ -1,0 +1,45 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Registro
+{% endblock %}
+{% block  content %}
+
+   
+    <div class="container d-flex justify-content-center align-items-center min-vh-100" style="margin-top:120px; margin-bottom:20px;">
+        
+           <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        
+           <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" >
+               <div class="featured-image mb-3">
+                <img src="{% static "images/indexicon.ico" %}" class="img-fluid" style="width: 100px;">
+               </div>
+               <p class="text-black fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Bienvenido!</p>
+               <small class="text-black text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Esperamos que encuentres ese producto que tanto buscas!</small>
+           </div> 
+       
+            
+           <div class="col-md-6 right-box" style= "margin-bottom:20px;">
+              <div class="row align-items-center">
+                    <div class="header-text mb-4">
+                         <h2>Hola!</h2>
+                         <p>Bienvenido a Attire!</p>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        {{ form | crispy }}
+
+                        <div class="input-group mb-3">
+                            <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <small>Tienes una cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></small>
+                    </div>
+              </div>
+           </div> 
+          </div>
+        </div>
+{% endblock %}

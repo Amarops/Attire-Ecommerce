@@ -1,0 +1,74 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+    Producto | {{producto.nombre}}
+{% endblock %}
+
+{% block  content %}
+<div style="margin-top:5cm">
+     <section id = "about" class = "py-5">
+        <div class = "container">
+            <div class = "row gy-lg-5 align-items-center">
+                <div class = "col-lg-6 order-lg-1 text-center text-lg-start">
+                    <div class = "title pt-3 pb-5">
+                        
+                        <h2 class = "position-relative d-inline-block ms-4">{{producto.nombre}}</h2>
+                    </div>
+                    <div class = "rating mt-3">
+                        {% if producto.valoracion == 1 %}
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        {% elif producto.valoracion == 2 %}
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        {% elif producto.valoracion == 3 %}                                   
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>     
+                        {% elif producto.valoracion == 4 %}
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        {% elif producto.valoracion == 5 %}
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        {% endif %}
+                    </div>
+                    <p class = "lead text-muted">{{producto.categoria}}</p>
+                    <h1>$ {{producto.precio | intcomma}}</h1>
+                    <a href = {% url 'Add' producto.id %} class = "btn btn-primary mt-3">Añadir al carrito</a>
+                    <br>
+                </div>
+                <div class = "col-lg-6 order-lg-0">
+                    <img src="../../media/{{producto.imagen}}" width="600" alt="Imagen de producto" style="object-fit: contain;">
+                </div>
+            </div>
+            <p class = "lead text-muted">Más sobre {{producto.nombre}}</p>
+            <p>{{producto.descripcion}}</p>
+            <br>
+            <p class = "lead text-muted">Potencia tu juego con Attire: la opción de los jugadores exigentes</p>
+            <p>Attire es tu destino confiable para productos tecnológicos de primera calidad en Chile, brindando una experiencia de compra excepcional y una selección cuidadosamente curada de Xbox, tarjetas gráficas, PlayStation y más.</p>
+            <br>
+            <p class = "lead text-muted">Satisfacción garantizada</p>
+            <p>Nuestro compromiso con la satisfacción del cliente comienza desde el momento en que exploras nuestras opciones de productos. Nuestro equipo de expertos ha seleccionado cuidadosamente cada aspecto del producto para asegurarse de que cumpla con los más altos estándares de calidad y rendimiento. Cada detalle ha sido considerado, desde el diseño hasta las características técnicas, con el objetivo de brindarte una experiencia excepcional.<br>
+                <br>
+                Una vez que adquieres nuestro producto, nos enorgullece ofrecerte un servicio al cliente de primer nivel. Estamos aquí para responder a tus preguntas, brindarte asesoramiento y resolver cualquier problema que puedas encontrar. Nuestro objetivo es asegurarnos de que estés completamente satisfecho con tu compra y que obtengas el máximo valor de ella.<br>
+                <br>
+                Sabemos que tus necesidades pueden evolucionar con el tiempo, y estamos preparados para acompañarte en cada etapa. Nos comprometemos a seguir mejorando nuestros productos y servicios para asegurarnos de que siempre estén a la altura de tus expectativas cambiantes. Tu satisfacción es nuestro motor para la innovación y el crecimiento continuo.</p>
+
+            <p class = "lead text-muted">Comprometidos con la calidad</p>
+            <p>En Attire, creemos que la calidad es la clave para una experiencia gaming excepcional. Por eso, nos asociamos únicamente con los fabricantes más reconocidos y prestigiosos del sector. Nuestros productos están cuidadosamente seleccionados para ofrecer el máximo rendimiento, durabilidad y funcionalidad. Desde los equipos de última generación hasta los periféricos más avanzados, puedes confiar en que cada producto de Attire ha sido rigurosamente probado y evaluado para brindarte una experiencia gaming inigualable.</p>
+            <br>
+            <p class = "lead text-muted">Atención al cliente excepcional</p>
+            <p>En Attire, la satisfacción de nuestros clientes es nuestra máxima prioridad. Nos enorgullece ofrecer un servicio al cliente excepcional, respaldado por un equipo de expertos apasionados por los videojuegos y la tecnología. Estamos aquí para ayudarte en cada paso del camino, desde la elección del producto perfecto hasta el soporte técnico continuo. Nuestro objetivo es brindarte una experiencia de compra sin problemas y garantizar que encuentres exactamente lo que necesitas para llevar tus habilidades gaming al siguiente nivel.</p>
+            <br>
+            <p class = "lead text-muted">Comunidad de gamers</p>
+            <p>En Attire, no solo somos una tienda de productos tecnológicos, también somos una comunidad de gamers apasionados. Compartimos tu entusiasmo por los videojuegos y nos esforzamos por construir una comunidad vibrante y acogedora. Organizamos eventos, torneos y actividades especiales para que los jugadores se conecten, compartan sus experiencias y disfruten juntos de su pasión común. Con Attire, no solo obtendrás los mejores productos, sino que también te unirás a una comunidad de gamers entusiastas que están aquí para apoyarte en tu viaje gaming.</p>
+        </div>
+    </section>   
+</div>
+{% endblock %}

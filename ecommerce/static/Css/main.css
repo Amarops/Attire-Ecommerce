@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
+
+:root{
+    --lg-font: 'Kaisei Tokumin', serif;
+    --sm-font: 'Poppins', sans-serif;
+    --pink: #e5345b;
+}
+body{
+    font-family: var(--sm-font);
+}
+
+/* button */
+.bg-primary{
+    background-color: var(--pink)!important;
+}
+
+.btn:not(.nav-btns button){
+    background-color: #fff;
+    color: rgb(85, 85, 85);
+    padding: 10px 28px;
+    border-radius: 25px;
+    border: 1px solid rgb(85, 85, 85);
+}
+.btn:not(.nav-btns button):hover{
+    background-color: var(--pink);
+    color: #fff;
+    border-color: var(--pink);
+}
+
+/* text color */
+.text-primary{
+    color: var(--pink)!important;
+}
+
+/* navbar */
+.navbar{
+    -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand img{
+    width: 30px;
+}
+.navbar-brand span{
+    letter-spacing: 2px;
+    font-family: var(--lg-font);
+}
+.nav-link:hover{
+    color: var(--pink)!important;
+}
+.nav-item{
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+}
+
+/* header */
+#header{
+    background: url(../images/foto_1_carrusel.jpg) top/cover no-repeat;
+}
+.carousel-inner h1{
+    font-size: 60px;
+    font-family: var(--lg-font);
+}
+.carousel-item .btn{
+    border-color: #fff!important;
+}
+.carousel-item .btn:hover{
+    border-color: var(--pink)!important;
+}
+
+/* title */
+.title h2::before{
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 50px;
+    background-color: var(--pink);
+    left: -20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+/* collection */
+.active-filter-btn{
+    background-color: var(--pink)!important;
+    color: #fff!important;
+    border-color: var(--pink)!important;
+}
+.filter-button-group .btn:hover{
+    color: #fff!important;
+}
+.collection-img span{
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+/* special */
+.special-img span{
+    top: 20px;
+    right: 20px;
+}
+.special-list .btn{
+    padding: 8px 20px!important;
+}
+.special-img img{
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.special-img:hover img{
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
+/* offers */
+#offers{
+    background: url(../images/offer_img.jpg) center/cover no-repeat;
+}
+#offers .row{
+    min-height: 60vh;
+}
+.offers-content span{
+    font-size: 28px;
+}
+.offers-content h2{
+    font-size: 60px;
+    font-family: var(--lg-font);
+}
+.offers-content .btn{
+    border-color: transparent!important;
+}
+
+/* about */
+#about{
+    background-color: rgba(179, 179, 179, 0.05);
+}
+
+/* newsletter */
+#newsletter{
+    background-color: rgba(179, 179, 179, 0.05);
+}
+#newsletter p{
+    max-width: 600px;
+}
+#newsletter .input-group{
+    max-width: 500px;
+}
+#newsletter .form-control{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+#newsletter .btn{
+    background-color: var(--pink);
+    color: #fff;
+    border-color: var(--pink);
+}
+#newsletter .btn:hover{
+    background-color: #000;
+    border-color: #000;
+}
+
+/* footer */
+footer .brand{
+    font-family: var(--lg-font);
+    letter-spacing: 2px;
+}
+footer a{
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+footer a:hover{
+    color: var(--pink)!important;
+}
+
+/* media queries */
+@media(min-width: 992px){
+    .nav-item{
+        border-bottom: none;
+    }
+}
+
+.imgsize{
+    width: 256px;
+    height:180px;
+}
+
+.imgsize-cardblog{
+    width: 70%;
+    height: 70%;
+}
+
+/*CARD BLOG*/
+.card-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Ajusta el ancho máximo de la tarjeta */
+    max-width: 500px; /* Ajusta el ancho máximo de la tarjeta */
+  }
+  
+  
+  .card {
+    position: relative;
+  }
+  
+  #closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* Media Queries para hacer el diseño responsivo */
+  
+  @media screen and (max-width: 768px) {
+    .card-container {
+      width: 90%;
+      max-width: 90%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .card-container {
+      width: 90%;
+      max-width: 90%;
+      padding: 10px;
+    }
+  }
+  
+/*NEWSLETER*/
+.message {
+    text-align: center;
+  }
+  
+  .success {
+    color: green;
+  }
+  
+  .error {
+    color: red;
+  }
+
+
+/*Feedback*/
+
+.mision.size{
+    margin-top: 100px;
+}
+.feedbacksize{
+    margin-top: 10%;
+}
+
+.card-feedback {
+    margin-bottom: 20px;
+}
+
+.card-img-feedback {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.rating-stars {
+    color: yellow;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 36px;
+    margin: 20px auto;
+  }
+
+  .number {
+    font-size: 36px;
+  }
+
+  .text {
+    font-size: 18px;
+  }
+
+/*Blog*/
+.blog-section {
+    background-color: #f2f2f2;
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  .blog-image {
+    margin-top: 90px;
+    width: 70%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .blog-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+  }
+
+  .blog-content {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+/*About US*/
+.about-section {
+    margin-top: 120px;
+    background-color: #f2f2f2;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .about-image {
+    height: 200px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+/* Carrusel about us */
+#carrusel {
+    background-color: #333333; 
+    padding-top: 30px; 
+    padding-bottom: 30px; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+  }
+  
+  #carrusel .container {
+    max-width: 600px; 
+    margin: 0 auto; 
+  }
+  
+  #carrusel h2 {
+    margin-bottom: 20px;
+    color: #ffffff; 
+  }
+  
+
+  #carrusel .carousel-item img {
+    max-width: 150px; 
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+  }
+
+

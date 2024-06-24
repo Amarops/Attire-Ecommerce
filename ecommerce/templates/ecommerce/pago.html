@@ -1,0 +1,56 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Pago
+{% endblock %}
+{% block  content %}
+<script> 
+
+    function confirmarAccesoURL()
+    {
+  return confirm("Error de conexión intentalo más tarde");
+    }
+</script>
+   
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        
+           <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        
+           <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" >
+               <div class="featured-image mb-3">
+                <img src="{% static "images/indexicon.ico" %}" class="img-fluid" style="width: 100px;">
+               </div>
+               <p class="text-black fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Finaliza tu pago!</p>
+               <small class="text-black text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Esperamos que disfrutes de tu pedido!</small>
+           </div> 
+       
+            
+           <div class="col-md-6 right-box">
+              <div class="row align-items-center">
+                    <div class="header-text mb-4">
+                         <h2>Pago </h2>
+                         <p>{{user.username | capfirst}}, solo falta finalizar el pago!</p>
+                         
+                    </div>
+                    <form class="form-inline">
+                        
+                        <input maxlength="16" type="password" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Número tarjeta">
+                        <input maxlength="5" type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Caducidad (MM/AA)">
+                        <input maxlength="3" type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="CVV">
+                        <br>    
+                        <a href="{% url 'index' %}" onclick="return confirmarAccesoURL()" style="text-decoration: none">
+                            <div class="input-group mb-3">
+                                <button type="submit" class="btn btn-lg btn-primary w-100 fs-6" href="{% url 'index' %}">Pagar</button>
+                            </div>
+                        </a>  
+                    </form>
+                    
+              </div>
+           </div> 
+          </div>
+        </div>
+  
+  
+{% endblock %}

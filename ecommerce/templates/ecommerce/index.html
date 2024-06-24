@@ -1,0 +1,246 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+    Inicio
+{% endblock %}
+
+{% block  content %}
+    <!-- header -->
+    <header id = "header" class = "vh-100 carousel slide" data-bs-ride = "carousel" style = "padding-top: 104px;">
+        <div class = "container h-100 d-flex align-items-center carousel-inner">
+            <div class = "text-center carousel-item active">
+                <h2 class = "text-capitalize text-white">Los mejores teclados</h2>
+                <h1 class = "text-uppercase py-2 fw-bold text-white">Razer y HP</h1>
+                <a href = "#collection" class = "btn mt-3 text-uppercase">Compra Ahora</a>
+            </div>
+            <div class = "text-center carousel-item">
+                <h2 class = "text-capitalize text-white">Los mejores precios</h2>
+                <h1 class = "text-uppercase py-2 fw-bold text-white">Accesible</h1>
+                <a href = "#collection" class = "btn mt-3 text-uppercase">Compra Ahora</a>
+            </div>
+        </div>
+
+        <button class = "carousel-control-prev" type = "button" data-bs-target="#header" data-bs-slide = "prev">
+            <span class = "carousel-control-prev-icon"></span>
+        </button>
+        <button class = "carousel-control-next" type = "button" data-bs-target="#header" data-bs-slide = "next">
+            <span class = "carousel-control-next-icon"></span>
+        </button>
+    </header>
+    <!-- end of header -->
+
+    <!-- collection -->
+    <section id = "collection" class = "py-5">
+        <div class = "container">
+            <div class = "title text-center">
+                <h2 class = "position-relative d-inline-block">Productos destacados</h2>
+            </div>
+
+            <div class = "row g-0">
+                <div class = "d-flex flex-wrap justify-content-center mt-5 filter-button-group">
+                    <button type = "button" class = "btn m-2 text-dark active-filter-btn" data-filter = "*">Todos</button>
+                    <a href="{% url 'filtro' %}?filtro=vendido" ><button type = "button" class = "btn m-2 text-dark" >Más vendido</button></a>
+                    <a href="{% url 'filtro' %}?filtro=rebaja" ><button type = "button" class = "btn m-2 text-dark" >Rebajas</button></a>
+                    <a href="{% url 'filtro' %}?filtro=ultimo" ><button type = "button" class = "btn m-2 text-dark" >Ultimo lanzamiento</button></a>
+                </div>
+
+
+                    {% for producto in  productos %}
+                        <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+                            <div class = "collection-img position-relative">
+                                <a href={% url 'detalle_producto' producto.id %}><img src="../media/{{producto.imagen}}"  class = "w-100 imgsize" style="object-fit: contain"></a>
+                                {% if producto.descuento > 0 %}
+                                    <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">{{producto.descuento}}%</span>
+                                {% endif %}
+                            </div>
+                            <div class = "text-center">
+                                <div class = "rating mt-3">
+                                    {% if producto.valoracion == 1 %}
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                    {% elif producto.valoracion == 2 %}
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                    {% elif producto.valoracion == 3 %}                                   
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>     
+                                    {% elif producto.valoracion == 4 %}
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                    {% elif producto.valoracion == 5 %}
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                    {% endif %}
+                                </div>
+                                <p class = "text-capitalize my-1">{{producto.nombre}}</p>
+                                <span class = "fw-bold">$ {{producto.precio|intcomma}}</span>
+                                <div>
+                                    <a href = {% url 'Add' producto.id %} class = "btn btn-primary mt-3">Añadir al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <!-- end of collection -->
+
+    <!-- special products -->
+    <section id = "special" class = "py-5">
+        <div class = "container">
+            <div class = "title text-center py-5">
+                <h2 class = "position-relative d-inline-block">Selección especial</h2>
+            </div>
+
+            <div class = "special-list row g-0">
+                {% for producto in  seleccion %}
+                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2">
+                        <div class = "special-img position-relative overflow-hidden">
+                            <img src="../media/{{producto.imagen}}" class = "w-100 imgsize" style="object-fit: contain">
+                            <span class = "position-absolute d-flex align-items-center justify-content-center text-primary fs-4">
+                                <i class = "fas fa-heart"></i>
+                            </span>
+                        </div>
+                        <div class = "text-center">
+                            <p class = "text-capitalize mt-3 mb-1">{{producto.nombre}}</p>
+                            <span class = "fw-bold d-block">$ {{producto.precio|intcomma}}</span>
+                            <a href = {% url 'Add' producto.id %} class = "btn btn-primary mt-3">Añadir al carrito</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- end of special products -->
+
+
+    <!-- blogs -->
+    <section id = "blogs" class = "py-5">
+        <div class = "container">
+            <div class = "title text-center py-5">
+                <h2 class = "position-relative d-inline-block">Community Blog</h2>
+            </div>
+
+            <div class = "row g-3">
+                {% for blog in blogs %}
+                    <div class = "card border-0 col-md-6 col-lg-4 bg-transparent my-3">
+                        <img src="../media/{{blog.imagen}}" alt = "">
+                        <div class = "card-body px-0">
+                            <h4 class = "card-title">{{blog.titulo}}</h4>
+                            <p class = "card-text mt-3 text-muted">{{blog.texto|slice:":400"}}...</p>
+                            <p class = "card-text">
+                                <small class = "text-muted">
+                                    <span class = "fw-bold">Autor: </span>{{blog.usuario}}
+                                </small>
+                            </p>
+                            
+                            <a href="{% url 'blogs' %}"><button class="btn">Leer más</button></a>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    <!-- end of blogs -->
+
+    <!-- about us -->
+    <section id = "about" class = "py-5">
+        <div class = "container">
+            <div class = "row gy-lg-5 align-items-center">
+                <div class = "col-lg-6 order-lg-1 text-center text-lg-start">
+                    <div class = "title pt-3 pb-5">
+                        <h2 class = "position-relative d-inline-block ms-4">Sobre Nosotros</h2>
+                    </div>
+                    <p class = "lead text-muted">Potencia tu juego con Attire: la opción de los jugadores exigentes.</p>
+                    <p>Attire es tu destino confiable para productos tecnológicos de primera calidad en Chile, brindando una experiencia de compra excepcional y una selección cuidadosamente curada de Xbox, tarjetas gráficas, PlayStation y más.</p>
+                </div>
+                <div class = "col-lg-6 order-lg-0">
+                    <img src = "{% static "images/aboutus.jpeg" %}" alt = "" class = "img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of about us -->
+
+    <!-- popular -->
+    <section id = "popular" class = "py-5">
+        <div class = "container">
+            <div class = "title text-center pt-3 pb-5">
+                <h2 class = "position-relative d-inline-block ms-4">Popular este año</h2>
+            </div>
+
+            <div class = "row">
+                <div class = "col-md-6 col-lg-4 row g-3">
+                    <h3 class = "fs-5">Mejor valorados</h3>
+                    {% for producto in seleccion|slice:3 %}
+                        <div class = "d-flex align-items-start justify-content-start">
+                            <img src="../media/{{producto.imagen}}" alt = "" class = "img-fluid pe-3 w-25">
+                            <div>
+                                <p class = "mb-0">{{producto.nombre}}</p>
+                                <span>$ {{producto.precio|intcomma}}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class = "col-md-6 col-lg-4 row g-3">
+                    <h3 class = "fs-5">Más vendidos</h3>
+                    {% for producto in productos|slice:3 %}
+                        <div class = "d-flex align-items-start justify-content-start">
+                            <img src="../media/{{producto.imagen}}" alt = "" class = "img-fluid pe-3 w-25">
+                            <div>
+                                <p class = "mb-0">{{producto.nombre}}</p>
+                                <span>$ {{producto.precio|intcomma}}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+
+                <div class = "col-md-6 col-lg-4 row g-3">
+                    <h3 class = "fs-5">Con descuento</h3>
+                    {% for producto in productos%}
+                        {% if producto.descuento > 0 %}
+                            <div class = "d-flex align-items-start justify-content-start">
+                                <img src="../media/{{producto.imagen}}" alt = "" class = "img-fluid pe-3 w-25">
+                                <div>
+                                    <p class = "mb-0">{{producto.nombre}}</p>
+                                    <span>$ {{producto.precio|intcomma}}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of popular -->
+
+    <!-- newsletter -->
+    <section id = "newsletter" class = "py-5">
+        <div class = "container">
+            <div class = "d-flex flex-column align-items-center justify-content-center">
+                <div class = "title text-center pt-3 pb-5">
+                    <h2 class = "position-relative d-inline-block ms-4">Suscríbete!</h2>
+                </div>
+
+                <p class = "text-center text-muted">¡Puedes suscribirte a nuestro Newsletter para disfrutar de las mejores ofertas en tecnología!</p>
+                <div class = "input-group mb-3 mt-3">
+                    <input type = "email" class = "form-control" id="emailInput" placeholder="Introduce tu e-mail">
+                    <button class = "btn btn-primary" type = "submit">Subscribe</button>
+                </div>
+                <div id="message"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

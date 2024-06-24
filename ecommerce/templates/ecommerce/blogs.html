@@ -1,0 +1,48 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block  content %}
+    <!--Blog-->
+    
+    <header id = "header" class = "vh-100 carousel slide" data-bs-ride = "carousel" style = "padding-top: 104px;">
+        <div class = "container h-100 d-flex align-items-center carousel-inner">
+            <div class = "text-center carousel-item active">
+                <h1 class = "text-uppercase py-2 fw-bold text-white">Bienvenido al blog!</h1>
+                <h2 class = "text-capitalize text-white">Haz tu pregunta o ayuda a otro!</h2>
+            </div>
+            <div class = "text-center carousel-item">
+                <h1 class = "text-uppercase py-2 fw-bold text-white">El respeto es primero</h1>
+                <h2 class = "text-capitalize text-white">Todos queremos disfrutar!</h2>
+            </div>
+        </div>
+
+        <button class = "carousel-control-prev" type = "button" data-bs-target="#header" data-bs-slide = "prev">
+            <span class = "carousel-control-prev-icon"></span>
+        </button>
+        <button class = "carousel-control-next" type = "button" data-bs-target="#header" data-bs-slide = "next">
+            <span class = "carousel-control-next-icon"></span>
+        </button>
+    </header>
+    
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class = "title text-center">
+            <h2 class = "position-relative d-inline-block">En tendencia</h2>
+        </div>
+        {% for publicacion in blogs  %}
+            <div class="card" id="blog" style="margin-left: 25%; margin-right:25%; margin-top: 50px">
+                <div class="card-body" >
+                    <h5 class="card-title font-weight-bold">{{publicacion.titulo}}</h5>
+                    <h6><b>{{publicacion.usuario}}</b></h6>
+                    <p class="card-text" align="justify">{{publicacion.texto}}
+                    </p>
+                    <img src="/media/{{publicacion.imagen}}"  class = "card-img-top" style="object-fit: contain">
+                </div>
+            </div>
+        {% endfor %}
+        
+
+{% endblock %}
